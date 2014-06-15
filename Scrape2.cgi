@@ -6,9 +6,6 @@
 # I did this in a way that didn't use the "next" buttons, but I used DateTime instead to
 # generate the urls for each comic every week
 #
-# Note to Dr. Provine: If you need me to change this to navigate via the 'next' buttons, please
-# let me know, and I will change it. It should be a quick/easy change if it's necessary.
-#
 # I tried to document this and make it as readable as possible, but this is perl. Good luck.
 
 
@@ -29,12 +26,6 @@ while ( $date->day_of_week != 1 ) {
 }
 
 
-#This is some sample input just to test if it pulled the whole week's comics (I wrote this on a monday
-# so only one comic was published for the week at the time.) It worked for the previous week.
-#
-#$date->subtract(days=>0);
-#$numComics = 1;
-
 
 #This is used to make sure that a false link isn't attempted if accessed on a sunday.
 # Otherwise, another little image will show up on the page on sundays.
@@ -52,6 +43,8 @@ my $target = sprintf("%d/%02d/%02d",
 
 
 # create CGI object and generate HTML:
+# the source folder is the path to one of my folders on the unix server 
+# upon which I was hosting this page
 my $cgi = new CGI;
 
 print $cgi->header(-type=>'text/html'),
